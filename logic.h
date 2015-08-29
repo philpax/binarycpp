@@ -8188,6 +8188,8 @@
 #define P_2045 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1
 #define B_011111111110 2046
 #define P_2046 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0
+#define B_011111111111 2047
+#define P_2047 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
 /* Binary -> number conversion */
 #define B_INTERNAL_(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
     JOIN(B_, JOIN(a0, JOIN(a1, JOIN(a2, JOIN(a3, JOIN(a4, JOIN(a5, JOIN(a6, JOIN(a7, JOIN(a8, JOIN(a9, JOIN(a10, a11))))))))))))

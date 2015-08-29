@@ -6,7 +6,7 @@ const int BitCount = 12;
 void generateTables()
 {
 	int min = -1 << (BitCount-1);
-	int max = ~min;
+	int max = ~min + 1;
 
 	int i = min;
 	while (i != max)
