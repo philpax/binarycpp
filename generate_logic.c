@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-const int BitCount = 8;
+const int BitCount = 12;
 
 void generateTables()
 {

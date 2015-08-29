@@ -6,5 +6,5 @@
 
 int main()
 {
-    printf("%i\n", ADD(P_100, N_80));
+    printf("%i\n", ADD(P_1356, N_56));
 }
