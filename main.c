@@ -4,6 +4,6 @@
 
 int main()
 {
-    printf("%i\n", B_(ADD(P_1356, P_44)));
-    printf("%i\n", B_(SUB(P_1456, P_56)));
+    printf("%i\n", B(SUB(ADD(P(24), P(20)), P(2))));
+    printf("__LINE__: %i; __LINE__ + 2: %i\n", __LINE__, B(ADD(P(__LINE__), P(2))));
 }

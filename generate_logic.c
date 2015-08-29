@@ -82,7 +82,15 @@ void generateB()
 	writeJoin(0);
 	printf(")\n");
 
-	printf("#define B_(x) B_INTERNAL_(x)\n");
+	printf("#define B(x) B_INTERNAL_(x)\n");
+}
+
+void generatePN()
+{
+	/* Macro declaration */
+	printf("/* Number -> binary conversion */\n");
+	printf("#define P(n) JOIN(P_, n)\n");
+	printf("#define N(n) JOIN(N_, n)\n");
 }
 
 void generateAdd()
@@ -203,6 +211,7 @@ int main()
 	generateTables();
 	generateForceExpansion();
 	generateB();
+	generatePN();
 	generateAdd();
 	generateNegate();
 	generateSub();
