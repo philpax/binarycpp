@@ -38,7 +38,7 @@ void writeJoin(int i)
 	printf(")");
 }
 
-void generateBInternal()
+void generateB()
 {
 	int i;
 
@@ -64,7 +64,7 @@ void generateBInternal()
 	printf("#define B_(x) B_INTERNAL_(x)\n");
 }
 
-void generateAdder()
+void generateAdd()
 {
 	int i;
 
@@ -146,7 +146,7 @@ void generateNegate()
 int main()
 {
 	generateTables();
-	generateBInternal();
-	generateAdder();
+	generateB();
+	generateAdd();
 	generateNegate();
 }
