@@ -1,6 +1,32 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 const int BitCount = 8;
+
+void generateTables()
+{
+	int min = -1 << (BitCount-1);
+	int max = ~min;
+
+	int i = min;
+	while (i != max)
+	{
+		int j = BitCount;
+
+		printf("#define B_");
+		while (j --> 0)
+			printf("%i", (i >> j) & 1);
+		printf(" %i\n", i);
+
+		printf("#define %s_%i ", (i < 0 ? "N" : "P"), abs(i));
+		j = BitCount;
+		while (j --> 0)
+			printf("%s%i", (j == BitCount - 1) ? "" : ", ", (i >> j) & 1);
+		printf("\n");
+
+		i++;
+	}
+}
 
 void writeJoin(int i)
 {
@@ -89,6 +115,7 @@ void generateAdder()
 
 int main()
 {
+	generateTables();
 	generateBInternal();
 	generateAdder();		
 }

@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include "tables.h"
 #include "gates.h"
 #include "logic.h"
 
