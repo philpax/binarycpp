@@ -8299,6 +8299,7 @@
      \
      0\
     )
+#define ADD(a, b) ADD_BITS(a, b)
 /* Negation */
 #define NEGATE_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
     ADD_BITS(\
@@ -8327,3 +8328,4 @@
      0, \
      1\
     )
+#define NEGATE(a) NEGATE_BITS(a)

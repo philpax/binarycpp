@@ -111,6 +111,8 @@ void generateAdder()
 
 		printf("    )%s\n", (i < BitCount - 1 ? ",\\" : ""));
 	}
+
+	printf("#define ADD(a, b) ADD_BITS(a, b)\n");
 }
 
 void generateNegate()
@@ -138,6 +140,7 @@ void generateNegate()
 	for (i = 0; i < BitCount; ++i)
 		printf("     %i%s\\\n", i == BitCount - 1, (i != BitCount - 1) ? ", " : "");
 	printf("    )\n");
+	printf("#define NEGATE(a) NEGATE_BITS(a)\n");
 }
 
 int main()
