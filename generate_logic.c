@@ -70,7 +70,7 @@ void generateAdder()
 
 	/* Macro declaration */
 	printf("/* Addition */\n");
-	printf("#define ADD_%iBIT(", BitCount);
+	printf("#define ADD_BITS(");
 
 	for (i = 0; i < BitCount; ++i)
 	{
