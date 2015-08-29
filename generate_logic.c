@@ -113,9 +113,37 @@ void generateAdder()
 	}
 }
 
+void generateNegate()
+{
+	int i;
+
+	/* Macro declaration */
+	printf("/* Negation */\n");
+	printf("#define NEGATE_BITS(");
+
+	for (i = 0; i < BitCount; ++i)
+	{
+		if (i)
+			printf(", ");
+
+		printf("a%i", i);
+	}
+
+	printf(")\\\n");
+
+	/* Statements */
+	printf("    ADD_BITS(\\\n");
+	for (i = 0; i < BitCount; ++i)
+		printf("     NOT(a%i),\\\n", i);
+	for (i = 0; i < BitCount; ++i)
+		printf("     %i%s\\\n", i == BitCount - 1, (i != BitCount - 1) ? ", " : "");
+	printf("    )\n");
+}
+
 int main()
 {
 	generateTables();
 	generateBInternal();
-	generateAdder();		
+	generateAdder();
+	generateNegate();
 }

@@ -8299,3 +8299,31 @@
      \
      0\
     )
+/* Negation */
+#define NEGATE_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    ADD_BITS(\
+     NOT(a0),\
+     NOT(a1),\
+     NOT(a2),\
+     NOT(a3),\
+     NOT(a4),\
+     NOT(a5),\
+     NOT(a6),\
+     NOT(a7),\
+     NOT(a8),\
+     NOT(a9),\
+     NOT(a10),\
+     NOT(a11),\
+     0, \
+     0, \
+     0, \
+     0, \
+     0, \
+     0, \
+     0, \
+     0, \
+     0, \
+     0, \
+     0, \
+     1\
+    )

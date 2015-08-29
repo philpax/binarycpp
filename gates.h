@@ -19,6 +19,12 @@
 
 #define AND(a, b) JOIN(AND_, JOIN(a, b))
 
+/* NOT */
+#define NOT_0 1
+#define NOT_1 0
+
+#define NOT(a) JOIN(NOT_, a)
+
 /* Full adder macros */
 /* Out = (A ^ B) ^ cin */
 #define FULL_ADD_OUT(a, b, cin) \
