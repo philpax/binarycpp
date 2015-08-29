@@ -28,6 +28,27 @@ void generateTables()
 	}
 }
 
+void generateForceExpansion()
+{
+	int i;
+
+	/* Macro declaration */
+	printf("/* Force expansion */\n");
+	printf("#define FE_BIT_2(fn");
+
+	for (i = 0; i < BitCount; ++i)
+		printf(", a%i", i);
+
+	printf(", b)\\\n");
+
+	printf("    fn(");
+
+	for (i = 0; i < BitCount; ++i)
+		printf("a%i, ", i);
+
+	printf("b)\n");
+}
+
 void writeJoin(int i)
 {
 	printf("JOIN(a%i, ", i);
@@ -143,10 +164,46 @@ void generateNegate()
 	printf("#define NEGATE(a) NEGATE_BITS(a)\n");
 }
 
+void generateSub()
+{
+	int i;
+
+	/* Macro declaration */
+	printf("/* Subtraction */\n");
+	printf("#define SUB_BITS(");
+
+	for (i = 0; i < BitCount; ++i)
+	{
+		if (i)
+			printf(", ");
+
+		printf("a%i", i);
+	}
+
+	for (i = 0; i < BitCount; ++i)
+	{
+		printf(", b%i", i);
+	}
+
+	printf(")\\\n");
+	printf("    FE_BIT_2(ADD_BITS, ");
+	for (i = 0; i < BitCount; ++i)
+		printf("a%i, ", i);
+	printf("\\\n");
+	printf("     NEGATE_BITS(");
+	for (i = 0; i < BitCount; ++i)
+		printf("b%i%s", i, (i != BitCount - 1) ? ", " : "");
+	printf("))\n");
+
+	printf("#define SUB(a, b) SUB_BITS(a, b)\n");
+}
+
 int main()
 {
 	generateTables();
+	generateForceExpansion();
 	generateB();
 	generateAdd();
 	generateNegate();
+	generateSub();
 }
