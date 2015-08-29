@@ -8190,9 +8190,6 @@
 #define P_2046 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0
 #define B_011111111111 2047
 #define P_2047 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1
-/* Force expansion */
-#define FE_BIT_2(fn, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, b)\
-    fn(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, b)
 /* Binary -> number conversion */
 #define B_INTERNAL_(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
     JOIN(B_, JOIN(a0, JOIN(a1, JOIN(a2, JOIN(a3, JOIN(a4, JOIN(a5, JOIN(a6, JOIN(a7, JOIN(a8, JOIN(a9, JOIN(a10, a11))))))))))))
@@ -8337,6 +8334,6 @@
 #define NEGATE(a) NEGATE_BITS(a)
 /* Subtraction */
 #define SUB_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)\
-    FE_BIT_2(ADD_BITS, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, \
+    FE(ADD_BITS, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, \
      NEGATE_BITS(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11))
 #define SUB(a, b) SUB_BITS(a, b)

@@ -35,3 +35,9 @@
    to XOR, which has been done here to avoid defining an OR operator */
 #define FULL_ADD_CARRY(a, b, cin) \
     XOR(AND(XOR(a, b), cin), AND(a, b))
+
+/* Identity gate to allow passing a bitvector through as one argument */
+#define I(...) __VA_ARGS__
+
+/* Force expansion call */
+#define FE(fn, ...) fn(__VA_ARGS__)
