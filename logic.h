@@ -513,7 +513,7 @@
     JOIN(B_, JOIN(a0, JOIN(a1, JOIN(a2, JOIN(a3, JOIN(a4, JOIN(a5, JOIN(a6, a7))))))))
 #define B_(x) B_INTERNAL_(x)
 /* Addition */
-#define ADD_8BIT(a0, a1, a2, a3, a4, a5, a6, a7, b0, b1, b2, b3, b4, b5, b6, b7)\
+#define ADD_BITS(a0, a1, a2, a3, a4, a5, a6, a7, b0, b1, b2, b3, b4, b5, b6, b7)\
     FULL_ADD_OUT(a0, b0, \
      FULL_ADD_CARRY(a1, b1, \
      FULL_ADD_CARRY(a2, b2, \

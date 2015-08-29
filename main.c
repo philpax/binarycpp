@@ -2,7 +2,7 @@
 #include "gates.h"
 #include "logic.h"
 
-#define ADD(a, b) B_(ADD_8BIT(a, b))
+#define ADD(a, b) B_(ADD_BITS(a, b))
 
 int main()
 {
