@@ -182,6 +182,34 @@ void generateLogic()
 
 	fprintf(file, "#define SUB(a, b) SUB_BITS(a, b)\n");
 
+	/* Shift left */
+	fprintf(file, "/* Shift left */\n");
+	for (i = 1; i < BitCount+1; ++i)
+	{
+		int j = 0;
+		fprintf(file, "#define SHL_%i_BITS(", i);
+
+		for (j = 0; j < BitCount; ++j)
+		{
+			if (j)
+				fprintf(file, ", ");
+
+			fprintf(file, "a%i", j);
+		}
+
+		fprintf(file, ")\\\n");
+
+		fprintf(file, "    ");
+		for (j = i; j < BitCount; ++j)
+			fprintf(file, "a%i, ", j);
+		for (j = 0; j < i; ++j)
+			fprintf(file, "0%s", (j != i-1) ? ", " : "");
+		fprintf(file, "\n");
+
+		fprintf(file, "#define SHL_%i(a) SHL_%i_BITS(a)\n", j, j);
+	}
+	fprintf(file, "#define SHL(a, b) JOIN(JOIN(SHL_, B(I(b))), _BITS)(a)\n");
+
 	fclose(file);
 }
 

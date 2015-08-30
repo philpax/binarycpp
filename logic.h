@@ -140,3 +140,41 @@
     FE(ADD_BITS, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, \
      NEGATE_BITS(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11))
 #define SUB(a, b) SUB_BITS(a, b)
+/* Shift left */
+#define SHL_1_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, 0
+#define SHL_1(a) SHL_1_BITS(a)
+#define SHL_2_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, 0, 0
+#define SHL_2(a) SHL_2_BITS(a)
+#define SHL_3_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    a3, a4, a5, a6, a7, a8, a9, a10, a11, 0, 0, 0
+#define SHL_3(a) SHL_3_BITS(a)
+#define SHL_4_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    a4, a5, a6, a7, a8, a9, a10, a11, 0, 0, 0, 0
+#define SHL_4(a) SHL_4_BITS(a)
+#define SHL_5_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    a5, a6, a7, a8, a9, a10, a11, 0, 0, 0, 0, 0
+#define SHL_5(a) SHL_5_BITS(a)
+#define SHL_6_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    a6, a7, a8, a9, a10, a11, 0, 0, 0, 0, 0, 0
+#define SHL_6(a) SHL_6_BITS(a)
+#define SHL_7_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    a7, a8, a9, a10, a11, 0, 0, 0, 0, 0, 0, 0
+#define SHL_7(a) SHL_7_BITS(a)
+#define SHL_8_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    a8, a9, a10, a11, 0, 0, 0, 0, 0, 0, 0, 0
+#define SHL_8(a) SHL_8_BITS(a)
+#define SHL_9_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    a9, a10, a11, 0, 0, 0, 0, 0, 0, 0, 0, 0
+#define SHL_9(a) SHL_9_BITS(a)
+#define SHL_10_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    a10, a11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+#define SHL_10(a) SHL_10_BITS(a)
+#define SHL_11_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    a11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+#define SHL_11(a) SHL_11_BITS(a)
+#define SHL_12_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+#define SHL_12(a) SHL_12_BITS(a)
+#define SHL(a, b) JOIN(JOIN(SHL_, B(I(b))), _BITS)(a)
