@@ -206,9 +206,38 @@ void generateLogic()
 			fprintf(file, "0%s", (j != i-1) ? ", " : "");
 		fprintf(file, "\n");
 
-		fprintf(file, "#define SHL_%i(a) SHL_%i_BITS(a)\n", j, j);
+		fprintf(file, "#define SHL_%i(a) SHL_%i_BITS(a)\n", i, i);
 	}
 	fprintf(file, "#define SHL(a, b) JOIN(JOIN(SHL_, B(I(b))), _BITS)(a)\n");
+
+	/* Shift right */
+	fprintf(file, "/* Shift right */\n");
+	for (i = 1; i < BitCount+1; ++i)
+	{
+		int j = 0;
+		int upperBound = BitCount-i;
+		fprintf(file, "#define SHR_%i_BITS(", i);
+
+		for (j = 0; j < BitCount; ++j)
+		{
+			if (j)
+				fprintf(file, ", ");
+
+			fprintf(file, "a%i", j);
+		}
+
+		fprintf(file, ")\\\n");
+
+		fprintf(file, "    ");
+		for (j = 0; j < i; ++j)
+			fprintf(file, "0%s", (j != BitCount-1) ? ", " : "");
+		for (j = 0; j < upperBound; ++j)
+			fprintf(file, "a%i%s", j, (j != upperBound-1) ? ", " : "");
+		fprintf(file, "\n");
+
+		fprintf(file, "#define SHR_%i(a) SHR_%i_BITS(a)\n", i, i);
+	}
+	fprintf(file, "#define SHR(a, b) JOIN(JOIN(SHR_, B(I(b))), _BITS)(a)\n");
 
 	fclose(file);
 }

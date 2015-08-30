@@ -178,3 +178,41 @@
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 #define SHL_12(a) SHL_12_BITS(a)
 #define SHL(a, b) JOIN(JOIN(SHL_, B(I(b))), _BITS)(a)
+/* Shift right */
+#define SHR_1_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    0, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10
+#define SHR_1(a) SHR_1_BITS(a)
+#define SHR_2_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    0, 0, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9
+#define SHR_2(a) SHR_2_BITS(a)
+#define SHR_3_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    0, 0, 0, a0, a1, a2, a3, a4, a5, a6, a7, a8
+#define SHR_3(a) SHR_3_BITS(a)
+#define SHR_4_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    0, 0, 0, 0, a0, a1, a2, a3, a4, a5, a6, a7
+#define SHR_4(a) SHR_4_BITS(a)
+#define SHR_5_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    0, 0, 0, 0, 0, a0, a1, a2, a3, a4, a5, a6
+#define SHR_5(a) SHR_5_BITS(a)
+#define SHR_6_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    0, 0, 0, 0, 0, 0, a0, a1, a2, a3, a4, a5
+#define SHR_6(a) SHR_6_BITS(a)
+#define SHR_7_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    0, 0, 0, 0, 0, 0, 0, a0, a1, a2, a3, a4
+#define SHR_7(a) SHR_7_BITS(a)
+#define SHR_8_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    0, 0, 0, 0, 0, 0, 0, 0, a0, a1, a2, a3
+#define SHR_8(a) SHR_8_BITS(a)
+#define SHR_9_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    0, 0, 0, 0, 0, 0, 0, 0, 0, a0, a1, a2
+#define SHR_9(a) SHR_9_BITS(a)
+#define SHR_10_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a0, a1
+#define SHR_10(a) SHR_10_BITS(a)
+#define SHR_11_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a0
+#define SHR_11(a) SHR_11_BITS(a)
+#define SHR_12_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+#define SHR_12(a) SHR_12_BITS(a)
+#define SHR(a, b) JOIN(JOIN(SHR_, B(I(b))), _BITS)(a)
