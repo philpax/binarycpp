@@ -216,3 +216,6 @@
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 #define SHR_12(a) SHR_12_BITS(a)
 #define SHR(a, b) JOIN(JOIN(SHR_, B(I(b))), _BITS)(a)
+/* Expansion */
+#define EXPAND(a) \
+    a, a, a, a, a, a, a, a, a, a, a, a

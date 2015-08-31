@@ -239,6 +239,20 @@ void generateLogic()
 	}
 	fprintf(file, "#define SHR(a, b) JOIN(JOIN(SHR_, B(I(b))), _BITS)(a)\n");
 
+	/* Expand */
+	fprintf(file, "/* Expansion */\n");
+	fprintf(file, "#define EXPAND(a) \\\n");	
+
+	fprintf(file, "    ");
+	for (i = 0; i < BitCount; ++i)
+	{
+		if (i)
+			fprintf(file, ", ");
+
+		fprintf(file, "a");
+	}
+	fprintf(file, "\n");
+
 	fclose(file);
 }
 
