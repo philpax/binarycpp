@@ -253,6 +253,32 @@ void generateLogic()
 	}
 	fprintf(file, "\n");
 
+	/* Binary and */
+	/* Macro declaration */
+	fprintf(file, "/* Binary and */\n");
+	fprintf(file, "#define BAND_BITS(");
+
+	for (i = 0; i < BitCount; ++i)
+	{
+		if (i)
+			fprintf(file, ", ");
+
+		fprintf(file, "a%i", i);
+	}
+
+	for (i = 0; i < BitCount; ++i)
+	{
+		fprintf(file, ", b%i", i);
+	}
+
+	fprintf(file, ")\\\n");
+	fprintf(file, "    ");
+	for (i = 0; i < BitCount; ++i)
+		fprintf(file, "AND(a%i, b%i)%s", i, i, (i != BitCount - 1) ? ", " : "");
+	fprintf(file, "\n");
+
+	fprintf(file, "#define BAND(a, b) BAND_BITS(a, b)\n");
+
 	fclose(file);
 }
 
