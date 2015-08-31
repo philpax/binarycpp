@@ -141,6 +141,9 @@
      NEGATE_BITS(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11))
 #define SUB(a, b) SUB_BITS(a, b)
 /* Shift left */
+#define SHL_0_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11
+#define SHL_0(a) SHL_0_BITS(a)
 #define SHL_1_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
     a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, 0
 #define SHL_1(a) SHL_1_BITS(a)
@@ -179,6 +182,9 @@
 #define SHL_12(a) SHL_12_BITS(a)
 #define SHL(a, b) JOIN(JOIN(SHL_, B(I(b))), _BITS)(a)
 /* Shift right */
+#define SHR_0_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
+    a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11
+#define SHR_0(a) SHR_0_BITS(a)
 #define SHR_1_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11)\
     0, a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10
 #define SHR_1(a) SHR_1_BITS(a)

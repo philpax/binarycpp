@@ -184,7 +184,7 @@ void generateLogic()
 
 	/* Shift left */
 	fprintf(file, "/* Shift left */\n");
-	for (i = 1; i < BitCount+1; ++i)
+	for (i = 0; i < BitCount+1; ++i)
 	{
 		int j = 0;
 		fprintf(file, "#define SHL_%i_BITS(", i);
@@ -201,7 +201,7 @@ void generateLogic()
 
 		fprintf(file, "    ");
 		for (j = i; j < BitCount; ++j)
-			fprintf(file, "a%i, ", j);
+			fprintf(file, "a%i%s", j, (j != BitCount-1 || i > 0) ? ", " : "");
 		for (j = 0; j < i; ++j)
 			fprintf(file, "0%s", (j != i-1) ? ", " : "");
 		fprintf(file, "\n");
@@ -212,7 +212,7 @@ void generateLogic()
 
 	/* Shift right */
 	fprintf(file, "/* Shift right */\n");
-	for (i = 1; i < BitCount+1; ++i)
+	for (i = 0; i < BitCount+1; ++i)
 	{
 		int j = 0;
 		int upperBound = BitCount-i;
