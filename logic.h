@@ -246,3 +246,5 @@
     P(0) \
     ))))))))))))
 #define MUL(a, b) MUL_BITS(a, b)
+#define SQUARE(x) MUL(I(x), I(x))
+#define CUBE(x) MUL(I(x), SQUARE(I(x)))

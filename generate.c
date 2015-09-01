@@ -319,6 +319,10 @@ void generateLogic()
 
 	fprintf(file, "#define MUL(a, b) MUL_BITS(a, b)\n");
 
+	/* Power */
+	fprintf(file, "#define SQUARE(x) MUL(I(x), I(x))\n");
+	fprintf(file, "#define CUBE(x) MUL(I(x), SQUARE(I(x)))\n");
+
 	fclose(file);
 }
 
