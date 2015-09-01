@@ -229,3 +229,20 @@
 #define BAND_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)\
     AND(a0, b0), AND(a1, b1), AND(a2, b2), AND(a3, b3), AND(a4, b4), AND(a5, b5), AND(a6, b6), AND(a7, b7), AND(a8, b8), AND(a9, b9), AND(a10, b10), AND(a11, b11)
 #define BAND(a, b) BAND_BITS(a, b)
+/* Multiplication */
+#define MUL_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)\
+    ADD(SHL(BAND(EXPAND(a11), I(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)), P(0)), \
+    ADD(SHL(BAND(EXPAND(a10), I(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)), P(1)), \
+    ADD(SHL(BAND(EXPAND(a9), I(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)), P(2)), \
+    ADD(SHL(BAND(EXPAND(a8), I(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)), P(3)), \
+    ADD(SHL(BAND(EXPAND(a7), I(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)), P(4)), \
+    ADD(SHL(BAND(EXPAND(a6), I(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)), P(5)), \
+    ADD(SHL(BAND(EXPAND(a5), I(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)), P(6)), \
+    ADD(SHL(BAND(EXPAND(a4), I(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)), P(7)), \
+    ADD(SHL(BAND(EXPAND(a3), I(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)), P(8)), \
+    ADD(SHL(BAND(EXPAND(a2), I(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)), P(9)), \
+    ADD(SHL(BAND(EXPAND(a1), I(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)), P(10)), \
+    ADD(SHL(BAND(EXPAND(a0), I(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)), P(11)), \
+    P(0) \
+    ))))))))))))
+#define MUL(a, b) MUL_BITS(a, b)

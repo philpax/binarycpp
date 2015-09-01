@@ -279,6 +279,46 @@ void generateLogic()
 
 	fprintf(file, "#define BAND(a, b) BAND_BITS(a, b)\n");
 
+	/* Multiplication */
+	/* Macro declaration */
+	fprintf(file, "/* Multiplication */\n");
+	fprintf(file, "#define MUL_BITS(");
+
+	for (i = 0; i < BitCount; ++i)
+	{
+		if (i)
+			fprintf(file, ", ");
+
+		fprintf(file, "a%i", i);
+	}
+
+	for (i = 0; i < BitCount; ++i)
+	{
+		fprintf(file, ", b%i", i);
+	}
+
+	fprintf(file, ")\\\n");
+
+	for (i = 0; i < BitCount; ++i)
+	{
+		int j;
+		fprintf(file, "    ADD(SHL(BAND(EXPAND(a%i), I(", BitCount - i - 1);
+
+		for (j = 0; j < BitCount; ++j)
+			fprintf(file, "b%i%s", j, (j != BitCount-1) ? ", " : "");
+		fprintf(file, ")), P(%i)), \\\n", i);
+	}
+
+	fprintf(file, "    P(0) \\\n");
+	fprintf(file, "    ");
+
+	for (i = 0; i < BitCount; ++i)
+		fprintf(file, ")");
+
+	fprintf(file, "\n");
+
+	fprintf(file, "#define MUL(a, b) MUL_BITS(a, b)\n");
+
 	fclose(file);
 }
 
