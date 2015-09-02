@@ -13,5 +13,7 @@ int main()
     printf("%i\n", B(SQUARE(P(9))));
     printf("%i\n", B(CUBE(P(9))));
     printf("%i %i\n", B(ADD(CUBE(P(1)), CUBE(P(12)))), B(ADD(CUBE(P(9)), CUBE(P(10)))));
+    printf("42 == 42: %i\n", EQUAL(P(42), P(42)));
+    printf("23 == 42: %i\n", EQUAL(P(23), P(42)));
     printf("__LINE__: %i; __LINE__ + 2: %i\n", __LINE__, B(ADD(P(__LINE__), P(2))));
 }

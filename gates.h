@@ -25,6 +25,9 @@
 
 #define NOT(a) JOIN(NOT_, a)
 
+/* XNOR */
+#define XNOR(a, b) NOT(XOR(a, b))
+
 /* Full adder macros */
 /* Out = (A ^ B) ^ cin */
 #define FULL_ADD_OUT(a, b, cin) \

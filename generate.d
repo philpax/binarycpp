@@ -180,6 +180,22 @@ void generatePower(ref File f)
 	f.writeln(`#define CUBE(x) MUL(I(x), SQUARE(I(x)))`);
 }
 
+void generateEquality(ref File f)
+{
+	f.writeln(`/* Equality */`);
+	f.writefln(`#define EQUAL_BITS(%s)\`, 
+		"a".argumentRange.chain("b".argumentRange).join(", "));
+	auto r = "a".argumentRange.zip("b".argumentRange);
+	foreach (a, b; r)
+	{
+		f.writeSpace();
+		f.writefln(`AND(XNOR(%s, %s), \`, a, b);
+	}
+	f.writeSpace();
+	f.writefln("1%s", ')'.repeat(BitCount));
+	f.writeln(`#define EQUAL(a, b) EQUAL_BITS(a, b)`);
+}
+
 void generateLogic()
 {
 	auto f = File("logic.h", "w");
@@ -194,6 +210,7 @@ void generateLogic()
 	f.generateBinaryAnd();
 	f.generateMultiplication();
 	f.generatePower();
+	f.generateEquality();
 }
 
 void main()
