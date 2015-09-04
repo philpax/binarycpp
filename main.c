@@ -30,4 +30,13 @@ int main()
     printf("- Equality -\n");
     printf("42 == 42: %i\n", EQUAL(P(42), P(42)));
     printf("23 == 42: %i\n", EQUAL(P(23), P(42)));
+
+    printf("- If statements -\n");
+    IF(EQUAL(P(42), MUL(P(21), P(2))),
+        printf("42 == 21 * 2\n"));
+    IF(EQUAL(P(42), MUL(P(21), P(3))),
+        printf("42 == 21 * 3\n"));
+    IF_ELSE(EQUAL(P(3), P(4)),
+        printf("3 == 4\n"),
+        printf("3 != 4\n"));
 }

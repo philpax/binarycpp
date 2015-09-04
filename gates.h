@@ -44,3 +44,13 @@
 
 /* Force expansion call */
 #define FE(fn, ...) fn(__VA_ARGS__)
+
+/* If */
+#define IF_0(x)
+#define IF_1(x) x
+#define IF(cond, x) JOIN(IF_, cond)(x)
+
+/* If-else */
+#define IF_ELSE_0(x, y) y
+#define IF_ELSE_1(x, y) x
+#define IF_ELSE(cond, x, y) JOIN(IF_ELSE_, cond)(x, y)
