@@ -264,3 +264,19 @@
     AND(XNOR(a11, b11), \
     1))))))))))))
 #define EQUAL(a, b) EQUAL_BITS(a, b)
+/* Greater than */
+#define GT_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)\
+    OR(AND(NOT(a0), b0), \
+    OR(AND(a1, NOT(b1)), \
+    OR(AND(XNOR(a1, b1), AND(a2, NOT(b2))), \
+    OR(AND(XNOR(a1, b1), AND(XNOR(a2, b2), AND(a3, NOT(b3)))), \
+    OR(AND(XNOR(a1, b1), AND(XNOR(a2, b2), AND(XNOR(a3, b3), AND(a4, NOT(b4))))), \
+    OR(AND(XNOR(a1, b1), AND(XNOR(a2, b2), AND(XNOR(a3, b3), AND(XNOR(a4, b4), AND(a5, NOT(b5)))))), \
+    OR(AND(XNOR(a1, b1), AND(XNOR(a2, b2), AND(XNOR(a3, b3), AND(XNOR(a4, b4), AND(XNOR(a5, b5), AND(a6, NOT(b6))))))), \
+    OR(AND(XNOR(a1, b1), AND(XNOR(a2, b2), AND(XNOR(a3, b3), AND(XNOR(a4, b4), AND(XNOR(a5, b5), AND(XNOR(a6, b6), AND(a7, NOT(b7)))))))), \
+    OR(AND(XNOR(a1, b1), AND(XNOR(a2, b2), AND(XNOR(a3, b3), AND(XNOR(a4, b4), AND(XNOR(a5, b5), AND(XNOR(a6, b6), AND(XNOR(a7, b7), AND(a8, NOT(b8))))))))), \
+    OR(AND(XNOR(a1, b1), AND(XNOR(a2, b2), AND(XNOR(a3, b3), AND(XNOR(a4, b4), AND(XNOR(a5, b5), AND(XNOR(a6, b6), AND(XNOR(a7, b7), AND(XNOR(a8, b8), AND(a9, NOT(b9)))))))))), \
+    OR(AND(XNOR(a1, b1), AND(XNOR(a2, b2), AND(XNOR(a3, b3), AND(XNOR(a4, b4), AND(XNOR(a5, b5), AND(XNOR(a6, b6), AND(XNOR(a7, b7), AND(XNOR(a8, b8), AND(XNOR(a9, b9), AND(a10, NOT(b10))))))))))), \
+    OR(AND(XNOR(a1, b1), AND(XNOR(a2, b2), AND(XNOR(a3, b3), AND(XNOR(a4, b4), AND(XNOR(a5, b5), AND(XNOR(a6, b6), AND(XNOR(a7, b7), AND(XNOR(a8, b8), AND(XNOR(a9, b9), AND(XNOR(a10, b10), AND(a11, NOT(b11)))))))))))), \
+    0))))))))))))
+#define GT(a, b) GT_BITS(a, b)

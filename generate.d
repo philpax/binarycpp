@@ -196,6 +196,42 @@ void generateEquality(ref File f)
 	f.writeln(`#define EQUAL(a, b) EQUAL_BITS(a, b)`);
 }
 
+void generateGreaterThan(ref File f)
+{
+	f.writeln(`/* Greater than */`);
+	f.writefln(`#define GT_BITS(%s)\`,
+		"a".argumentRange.chain("b".argumentRange).join(", "));
+	auto r = "a".argumentRange.zip("b".argumentRange);
+
+	f.writeSpace();
+	f.writeln(`OR(AND(NOT(a0), b0), \`);
+	foreach (i, a, b; r[1..$].enumerate)
+	{
+		f.writeSpace();
+		f.write(`OR(`);
+		if (i)
+		{
+			foreach (j; 0..i)
+			{
+				f.writef(`AND(XNOR(a%s, b%s), `, j+1, j+1);
+			}
+		}
+		f.writef(`AND(%s, NOT(%s))`, a, b);
+		if (i)
+		{
+			foreach (j; 0..i)
+			{
+				f.writef(`)`);
+			}
+		}
+		f.writeln(`, \`);
+	}
+
+	f.writeSpace();
+	f.writefln("0%s", ')'.repeat(BitCount));
+	f.writeln(`#define GT(a, b) GT_BITS(a, b)`);
+}
+
 void generateLogic()
 {
 	auto f = File("logic.h", "w");
@@ -211,6 +247,7 @@ void generateLogic()
 	f.generateMultiplication();
 	f.generatePower();
 	f.generateEquality();
+	f.generateGreaterThan();
 }
 
 void main()
