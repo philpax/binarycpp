@@ -280,3 +280,7 @@
     OR(AND(XNOR(a1, b1), AND(XNOR(a2, b2), AND(XNOR(a3, b3), AND(XNOR(a4, b4), AND(XNOR(a5, b5), AND(XNOR(a6, b6), AND(XNOR(a7, b7), AND(XNOR(a8, b8), AND(XNOR(a9, b9), AND(XNOR(a10, b10), AND(a11, NOT(b11)))))))))))), \
     0))))))))))))
 #define GT(a, b) GT_BITS(a, b)
+/* Greater than or equal */
+#define GE_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11)\
+    OR(EQUAL_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11), GT_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11))
+#define GE(a, b) GE_BITS(a, b)
