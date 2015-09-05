@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include "logic.h"
 
+#define INC_FN(x) ADD(I(x), P(2))
+#define COND_FN(x) LT(I(x), P(10))
+#define EXEC_GENERATE_FN(x) void JOIN(function, B(I(x)))() { printf("Compile-time for loop: %i\n", B(I(x))); }
+FOR_EACH(P(0), INC_FN, COND_FN, EXEC_GENERATE_FN)
+
 int main()
 {
     printf("- Addition / subtraction -\n");
@@ -72,8 +77,6 @@ int main()
         printf("3 == 4\n"),
         printf("3 != 4\n"));
 
-    #define INC_FN(x) ADD(I(x), P(1))
-    #define COND_FN(x) LT(I(x), P(10))
-    #define EXEC_FN(x) printf("Compile-time for loop: %i\n", B(I(x)));
-    FOR_EACH(P(0), INC_FN, COND_FN, EXEC_FN)
+    #define EXEC_CALL_FN(x) JOIN(function, B(I(x)))();
+    FOR_EACH(P(0), INC_FN, COND_FN, EXEC_CALL_FN)
 }
