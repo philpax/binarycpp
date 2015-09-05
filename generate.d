@@ -269,6 +269,7 @@ void generateLogic()
 	auto f = File("logic.h", "w");
 	f.writeln(`#include "gates.h"`);
 	f.writeln(`#include "number.h"`);
+	f.writeln(`#include "control_flow.h"`);
 	f.generateAddition();
 	f.generateNegation();
 	f.generateSubtraction();
@@ -285,8 +286,27 @@ void generateLogic()
 	f.generateLessThanOrEqual();
 }
 
+void generateControlFlow()
+{
+	auto f = File("control_flow.h", "w");
+	auto min = -1 << (BitCount - 1);
+	auto max = -min;
+
+	foreach (i; 0..max)
+	{
+		f.writefln(`#define FOR_EACH_%s(curr, inc, cond, fn) \`, i);
+		f.writeSpace();
+		f.writeln(`fn(I(curr)) IF_ELSE(cond(inc(I(curr))), JOIN(FOR_EACH_, B(inc(I(curr)))), SWALLOW)(inc(I(curr)), inc, cond, fn)`);
+	}
+
+	f.writeln(`#define FOR_EACH(curr, inc, cond, fn) \`);
+	f.writeSpace();
+	f.writeln(`JOIN(FOR_EACH_, B_INTERNAL_(curr))(I(curr), inc, cond, fn)`);
+}
+
 void main()
 {
 	generateNumber();
 	generateLogic();
+	generateControlFlow();
 }

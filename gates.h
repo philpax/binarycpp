@@ -50,6 +50,9 @@
 /* Identity gate to allow passing a bitvector through as one argument */
 #define I(...) __VA_ARGS__
 
+/* Swallow input */
+#define SWALLOW(...)
+
 /* Force expansion call */
 #define FE(fn, ...) fn(__VA_ARGS__)
 

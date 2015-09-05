@@ -71,4 +71,9 @@ int main()
     IF_ELSE(EQUAL(P(3), P(4)),
         printf("3 == 4\n"),
         printf("3 != 4\n"));
+
+    #define INC_FN(x) ADD(I(x), P(1))
+    #define COND_FN(x) LT(I(x), P(10))
+    #define EXEC_FN(x) printf("Compile-time for loop: %i\n", B(I(x)));
+    FOR_EACH(P(0), INC_FN, COND_FN, EXEC_FN)
 }
