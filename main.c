@@ -47,6 +47,14 @@ int main()
     printf("0 >= -1: %i\n", GE(P(0), N(1)));
     printf("-1 >= -2: %i\n", GE(N(1), N(2)));
 
+    printf("- Less than -\n");
+    printf("43 < 42: %i\n", LT(P(43), P(42)));
+    printf("42 < 42: %i\n", LT(P(42), P(42)));
+    printf("41 < 42: %i\n", LT(P(41), P(42)));
+    printf("-1 < 42: %i\n", LT(N(1), P(42)));
+    printf("-1 < 0: %i\n", LT(N(1), P(0)));
+    printf("-2 < -1: %i\n", LT(N(2), N(1)));
+
     printf("- If statements -\n");
     IF(EQUAL(P(42), MUL(P(21), P(2))),
         printf("42 == 21 * 2\n"));

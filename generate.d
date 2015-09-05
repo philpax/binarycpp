@@ -242,6 +242,17 @@ void generateGreaterThanOrEqual(ref File f)
 	f.writeln(`#define GE(a, b) GE_BITS(a, b)`);
 }
 
+void generateLessThan(ref File f)
+{
+	f.writeln(`/* Less than */`);
+	f.writefln(`#define LT_BITS(%s)\`, 
+		"a".argumentRange.chain("b".argumentRange).join(", "));
+	f.writeSpace();
+	f.writefln(`GT_BITS(%s)`, 
+		"b".argumentRange.chain("a".argumentRange).join(", "));
+	f.writeln(`#define LT(a, b) LT_BITS(a, b)`);
+}
+
 void generateLogic()
 {
 	auto f = File("logic.h", "w");
@@ -259,6 +270,7 @@ void generateLogic()
 	f.generateEquality();
 	f.generateGreaterThan();
 	f.generateGreaterThanOrEqual();
+	f.generateLessThan();
 }
 
 void main()
