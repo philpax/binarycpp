@@ -11,6 +11,14 @@
 
 #define XOR(a, b) JOIN(XOR_, JOIN(a, b))
 
+/* OR */
+#define OR_00 0
+#define OR_10 1
+#define OR_01 1
+#define OR_11 1
+
+#define OR(a, b) JOIN(OR_, JOIN(a, b))
+
 /* AND */
 #define AND_00 0
 #define AND_10 0
