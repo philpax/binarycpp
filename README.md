@@ -1,2 +1,2 @@
 # binarycpp
-A n-bit full adder, implemented in the C preprocessor. A permanent repository for the latest version of the code described [here](http://philpax.me/blog/abusing-the-c-preprocessor-writing-a-4-bit-adder).
+Compile-time binary arithmetic in the C preprocessor. An advanced version of the technique described [here](http://philpax.me/blog/abusing-the-c-preprocessor-writing-a-4-bit-adder).
