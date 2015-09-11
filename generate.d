@@ -1,6 +1,6 @@
 import std.stdio, std.conv, std.algorithm, std.range, std.math, std.string;
 
-enum BitCount = 12;
+enum BitCount = 16;
 
 auto toBitVector(int n)
 {
