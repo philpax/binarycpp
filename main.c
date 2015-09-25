@@ -1,5 +1,11 @@
 #include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+
+#include <sys/mman.h>
+
 #include "logic.h"
+#include "assembly.h"
 
 #define INC_FN(x) ADD(I(x), P(2))
 #define COND_FN(x) LT(I(x), P(10))
@@ -79,4 +85,25 @@ int main()
 
     #define EXEC_CALL_FN(x) JOIN(function, B(I(x)))();
     FOR_EACH(P(0), INC_FN, COND_FN, EXEC_CALL_FN)
+
+    uint8_t bytes[] = {
+        PUSH(EBP),
+        MOV_RR(EBP, ESP),
+        MOV_RI(EAX, P(12)),
+        MOV_RI(EDX, P(30)),
+        ADD_RR(EAX, EDX),
+        POP(EBP),
+        RET()
+    };
+
+    uint8_t* buffer = (uint8_t*)mmap(
+        NULL, sizeof(bytes), PROT_READ|PROT_WRITE|PROT_EXEC,
+        MAP_PRIVATE|MAP_ANONYMOUS, 0, 0);
+
+    memcpy(buffer, bytes, sizeof(bytes));
+
+    typedef int (*FunctionType)();
+    printf("Function call: %i\n", ((FunctionType)buffer)());
+
+    munmap(buffer, sizeof(bytes));
 }
