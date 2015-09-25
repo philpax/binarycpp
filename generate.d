@@ -156,6 +156,16 @@ void generateBinaryAnd(ref File f)
 	f.writeln(`#define BAND(a, b) BAND_BITS(a, b)`);
 }
 
+void generateBinaryOr(ref File f)
+{
+	f.writeln(`/* Binary or */`);
+	f.writefln(`#define BOR_BITS(%s)\`, 
+		"a".argumentRange.chain("b".argumentRange).join(", "));
+	f.writeSpace();
+	f.writeln(BitCount.iota.map!(a => "OR(a%s, b%s)".format(a, a)).join(", "));
+	f.writeln(`#define BOR(a, b) BOR_BITS(a, b)`);
+}
+
 void generateMultiplication(ref File f)
 {
 	f.writeln(`/* Multiplication */`);
@@ -277,6 +287,7 @@ void generateLogic()
 	f.generateShiftRight();
 	f.generateExpansion();
 	f.generateBinaryAnd();
+	f.generateBinaryOr();
 	f.generateMultiplication();
 	f.generatePower();
 	f.generateEquality();

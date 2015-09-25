@@ -328,6 +328,10 @@
 #define BAND_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15)\
     AND(a0, b0), AND(a1, b1), AND(a2, b2), AND(a3, b3), AND(a4, b4), AND(a5, b5), AND(a6, b6), AND(a7, b7), AND(a8, b8), AND(a9, b9), AND(a10, b10), AND(a11, b11), AND(a12, b12), AND(a13, b13), AND(a14, b14), AND(a15, b15)
 #define BAND(a, b) BAND_BITS(a, b)
+/* Binary or */
+#define BOR_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15)\
+    OR(a0, b0), OR(a1, b1), OR(a2, b2), OR(a3, b3), OR(a4, b4), OR(a5, b5), OR(a6, b6), OR(a7, b7), OR(a8, b8), OR(a9, b9), OR(a10, b10), OR(a11, b11), OR(a12, b12), OR(a13, b13), OR(a14, b14), OR(a15, b15)
+#define BOR(a, b) BOR_BITS(a, b)
 /* Multiplication */
 #define MUL_BITS(a0, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10, a11, a12, a13, a14, a15, b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15)\
     ADD(SHL(BAND(EXPAND(a15), I(b0, b1, b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12, b13, b14, b15)), P(0)), \
